@@ -1,0 +1,16 @@
+import React from "react";
+import { ComponentStory, ComponentMeta } from "@storybook/react";
+
+import { GoogleSignInButton } from "./GoogleSignInButton";
+
+export default {
+  title: "Auth/GoogleSignInButton",
+  component: GoogleSignInButton,
+} as ComponentMeta<typeof GoogleSignInButton>;
+
+const Template: ComponentStory<typeof GoogleSignInButton> = args => (
+  <GoogleSignInButton {...args} />
+);
+
+export const Default = Template.bind({});
+Default.args = {};
