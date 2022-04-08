@@ -4,7 +4,15 @@ import { Card, Icon, Image, Label, Button } from "semantic-ui-react";
 import { useImpressionReporter } from "@/features/advertisements";
 import { useBuyContext } from "@/features/buy/context";
 
-function getColor({ isFocused, isPremium, isHovered }) {
+function getColor({
+  isFocused,
+  isPremium,
+  isHovered,
+}: {
+  isHovered: boolean;
+  isFocused: boolean;
+  isPremium: boolean;
+}) {
   if (isHovered) {
     return "green";
   }
@@ -17,7 +25,12 @@ function getColor({ isFocused, isPremium, isHovered }) {
   return undefined;
 }
 
-export function NFTCard({ pokemon, ...otherProps }: { pokemon: NFT }) {
+export default function NFTCard({
+  pokemon,
+  ...otherProps
+}: {
+  pokemon: Pokemon;
+}) {
   const isPremium = pokemon.weight % 7 === 0;
   const impressionReporter = useImpressionReporter();
   const buyContext = useBuyContext();

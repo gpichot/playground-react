@@ -1,2 +1,2 @@
-export { useMessages, MessagesProvider } from "./context";
+export { MessagesProvider, useMessages } from "./context";
 export { MessageHub } from "./MessageHub";

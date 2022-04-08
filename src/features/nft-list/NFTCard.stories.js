@@ -1,6 +1,6 @@
 import React from "react";
-import { Bulbasaur } from "./mocks";
 
+import { Bulbasaur } from "./mocks";
 /**
  * TODO-EXO(exo-story)
  * Dans cet exercice vous allez rajouter une story pour le
@@ -10,7 +10,6 @@ import { Bulbasaur } from "./mocks";
  * 2. Créer un template pour ce composant.
  * 3. Créer une story pour ce composant.
  */
-
 import { NFTCard } from "./NFTCard";
 
 export default {

@@ -7,7 +7,7 @@
     "plugin:react-hooks/recommended", // Recommended react hooks linting configs.
     "plugin:jsx-a11y/recommended", // Turns on a11y rules for JSX.
     "plugin:@typescript-eslint/recommended", // Turns on rules from TypeScript-specific plugin.
-    "plugin:prettier/recommended" // Turns off all rules that are unnecessary or might conflict with Prettier.
+    "plugin:prettier/recommended", // Turns off all rules that are unnecessary or might conflict with Prettier.
     "plugin:storybook/recommended" // Recommended storybook linting configs.
   ],
   "plugins": [
@@ -25,7 +25,24 @@
     "import/newline-after-import": "error",
     "import/no-duplicates": "error",
     "import/no-named-as-default-member": "off",
-    "simple-import-sort/imports": "error",
+    "simple-import-sort/imports": [
+      "error",
+      {
+        "groups": [
+          // Things that start with a letter (or digit or underscore), or `@` followed by a letter.
+          // Packages. `react` related packages come first.
+          ["^react", "^@?\\w"],
+          // Absolute imports and other imports such as Vue-style `@/foo`.
+          // Anything that does not start with a dot.
+          ["^[^.@]"],
+          ["^@pokenft"],
+          ["^@"],
+          ["^\\x00?[^.].*\\.css$"],
+          ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"],
+          ["\\.s?css$"]
+        ]
+      }
+    ],
     "simple-import-sort/exports": "error"
   },
   "env": {

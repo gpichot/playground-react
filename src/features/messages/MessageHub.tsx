@@ -1,7 +1,8 @@
 import React from "react";
 import { Message } from "semantic-ui-react";
-import { MessageType } from "./types";
+
 import { useMessages } from "./context";
+import { MessageType } from "./types";
 
 export function MessageHub() {
   const messages = useMessages() as { messages: MessageType[] };

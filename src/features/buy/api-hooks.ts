@@ -1,7 +1,7 @@
-import { APIResourceList } from "pokedex-promise-v2";
 import { useQuery } from "react-query";
+import { APIResourceList } from "pokedex-promise-v2";
 
-import { sleep, get } from "@/utils";
+import { get, sleep } from "@/utils";
 
 export function useTopSellNFTsQuery() {
   return useQuery(

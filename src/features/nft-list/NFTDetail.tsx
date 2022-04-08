@@ -1,7 +1,8 @@
-import { NFT } from "pokedex-promise-v2";
 import React from "react";
 import { useParams } from "react-router-dom";
+import { NFT } from "pokedex-promise-v2";
 import { Button, Icon, Segment, Statistic } from "semantic-ui-react";
+
 import { BuyForm } from "../buy/BuyForm";
 import { useNFTQuery } from "./api-hooks";
 import { NFTForTypeList } from "./NFTForTypeList";

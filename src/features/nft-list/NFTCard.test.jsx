@@ -1,10 +1,10 @@
 import React from "react";
-import { render } from "@/test/utils";
 import { screen } from "@testing-library/react";
 
-import { NFTCard } from "./NFTCard";
+import { render } from "@/test/utils";
 
 import { Bulbasaur, Guts } from "./mocks";
+import { NFTCard } from "./NFTCard";
 
 /**
  * TODO-EXO(exo-unit-test)

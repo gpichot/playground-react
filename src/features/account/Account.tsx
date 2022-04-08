@@ -1,9 +1,10 @@
 import React from "react";
+import { Card } from "semantic-ui-react";
+
+import { NFTCard } from "@pokenft/common";
 
 import { useBuyContext } from "@/features/buy/context";
-import { NFTCard } from "@/features/nft-list/NFTCard";
 import { useNFTQuery } from "@/features/nft-list/api-hooks";
-import { Card } from "semantic-ui-react";
 
 export function Account() {
   const { balance, properties } = useBuyContext();

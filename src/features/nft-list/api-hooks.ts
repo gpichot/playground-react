@@ -1,7 +1,7 @@
-import { NFT, NFTType, Type } from "pokedex-promise-v2";
 import { useQuery } from "react-query";
+import { NFT, NFTType, Type } from "pokedex-promise-v2";
 
-import { sleep, get } from "@/utils";
+import { get, sleep } from "@/utils";
 
 function getNFTsList(): Promise<NFT[]> {
   return Promise.all(

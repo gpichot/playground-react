@@ -1,9 +1,12 @@
 import React from "react";
-import { useNFTQuery } from "@/features/nft-list/api-hooks";
-import { NFTCard } from "@/features/nft-list/NFTCard";
-import { useTopSellNFTsQuery } from "./api-hooks";
 import { Card } from "semantic-ui-react";
+
+import { NFTCard } from "@pokenft/common";
+
+import { useNFTQuery } from "@/features/nft-list/api-hooks";
 import { withAdaptive } from "@/utils";
+
+import { useTopSellNFTsQuery } from "./api-hooks";
 
 const computeAdaptiveProps = (width: number) =>
   ({
@@ -40,11 +43,7 @@ export default function TopSellList() {
       <h1>Top Sell</h1>
       <AdaptiveCardGroup>
         {pokemons.map(pokemon => (
-          <LoadNFTCard
-            key={pokemon.id}
-            pokemon={pokemon}
-            selected={selected}
-          />
+          <LoadNFTCard key={pokemon.id} pokemon={pokemon} selected={selected} />
         ))}
       </AdaptiveCardGroup>
     </div>

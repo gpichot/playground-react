@@ -1,7 +1,9 @@
 import React from "react";
 import { Card } from "semantic-ui-react";
+
+import { NFTCard } from "@pokenft/common";
+
 import { useNFTList } from "./api-hooks";
-import { NFTCard } from "./NFTCard";
 
 export function NFTList() {
   const pokemons = useNFTList();

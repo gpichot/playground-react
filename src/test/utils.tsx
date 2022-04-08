@@ -1,5 +1,6 @@
-import { render as rtlRender } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
+import { render as rtlRender } from "@testing-library/react";
+
 import { BuyContextProvider } from "@/features/buy/context";
 import { MessagesProvider } from "@/features/messages";
 

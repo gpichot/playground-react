@@ -1,8 +1,9 @@
 import React from "react";
-import { Menu, Container, Button } from "semantic-ui-react";
+import { Link, useMatch, useResolvedPath } from "react-router-dom";
+import { Button, Container, Menu } from "semantic-ui-react";
+
 import { SignInModal } from "@/features/auth/SignInModal";
 import { useBuyContext } from "@/features/buy/context";
-import { Link, useMatch, useResolvedPath } from "react-router-dom";
 
 export function NavBar() {
   const [signInModalOpen, setSignInModalOpen] = React.useState(false);

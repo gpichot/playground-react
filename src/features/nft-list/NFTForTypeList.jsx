@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Card } from "semantic-ui-react";
-import { NFTCard } from "./NFTCard";
+import { NFTCard } from "@pokenft/common";
 
 /**
  * TODO-EXO(exo-react-query-paginate)

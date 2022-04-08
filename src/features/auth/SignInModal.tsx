@@ -1,9 +1,9 @@
 import React from "react";
-import { Modal, Message } from "semantic-ui-react";
 import GoogleLogin, {
   GoogleLoginResponse,
   GoogleLoginResponseOffline,
 } from "react-google-login";
+import { Message, Modal } from "semantic-ui-react";
 
 import { GoogleSignInButton } from "./GoogleSignInButton";
 
