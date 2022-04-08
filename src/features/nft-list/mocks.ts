@@ -1,4 +1,6 @@
-export const Bulbasaur = {
+import { NFT } from "@pokenft/common";
+
+export const Bulbasaur: NFT = {
   abilities: [
     {
       ability: {
@@ -27,7 +29,6 @@ export const Bulbasaur = {
   id: 1,
   is_default: true,
   location_area_encounters: "https://pokeapi.co/api/v2/pokemon/1/encounters",
-  moves: [],
   name: "bulbasaur",
   order: 1,
   past_types: [],
@@ -48,8 +49,6 @@ export const Bulbasaur = {
     front_shiny:
       "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/1.png",
     front_shiny_female: null,
-    other: {},
-    versions: {},
   },
   stats: [
     {
@@ -102,7 +101,7 @@ export const Bulbasaur = {
   weight: 69,
 };
 
-export const Ivysaur = {
+export const Ivysaur: NFT = {
   abilities: [
     {
       ability: {

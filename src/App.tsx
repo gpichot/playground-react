@@ -1,7 +1,7 @@
 import React from "react";
 
-import { Footer } from "@/components/Footer";
-import { NavBar } from "@/components/NavBar";
+import Footer from "@/components/Footer";
+import NavBar from "@/components/NavBar";
 import { BuyContextProvider } from "@/features/buy/context";
 import NFTList from "@/features/nft-list/NFTList";
 

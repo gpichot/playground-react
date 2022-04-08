@@ -14,7 +14,7 @@ type SignInModalProps = {
 
 const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID;
 
-export function SignInModal({ open, onClose }: SignInModalProps) {
+function SignInModal({ open, onClose }: SignInModalProps) {
   if (typeof GOOGLE_CLIENT_ID !== "string") {
     throw new Error("Missing GOOGLE_CLIENT_ID environment variable");
   }
@@ -51,3 +51,5 @@ export function SignInModal({ open, onClose }: SignInModalProps) {
     </Modal>
   );
 }
+
+export default SignInModal;

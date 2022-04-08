@@ -1,9 +1,11 @@
 import React from "react";
-import { Pokemon } from "pokedex-promise-v2";
 import { Button, Card, Icon, Image, Label } from "semantic-ui-react";
 
-import { useImpressionReporter } from "@/features/advertisements";
 import { useBuyContext } from "@/features/buy/context";
+import { useImpressionReporter } from "@/features/impressions";
+
+import { NFT } from "../types";
+import { isNFTPremium } from "../utils";
 
 function getColor({
   isFocused,
@@ -26,13 +28,8 @@ function getColor({
   return undefined;
 }
 
-export default function NFTCard({
-  pokemon,
-  ...otherProps
-}: {
-  pokemon: Pokemon;
-}) {
-  const isPremium = pokemon.weight % 7 === 0;
+export default function NFTCard({ pokemon, ...otherProps }: { pokemon: NFT }) {
+  const isPremium = isNFTPremium(pokemon);
   const impressionReporter = useImpressionReporter();
   const buyContext = useBuyContext();
   const hp = pokemon.stats.find(stat => stat.stat.name === "hp");
