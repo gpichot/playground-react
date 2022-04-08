@@ -1,4 +1,4 @@
-import { Pokemon } from "pokedex-promise-v2";
+import { NFT } from "pokedex-promise-v2";
 import React from "react";
 import { Button, Form, Message } from "semantic-ui-react";
 import { useMessages } from "@/features/messages";
@@ -18,7 +18,7 @@ async function sleep() {
  *
  */
 
-export function BuyForm({ pokemon }: { pokemon: Pokemon }) {
+export function BuyForm({ pokemon }: { pokemon: NFT }) {
   const buyContext = useBuyContext();
   const messages = useMessages();
 

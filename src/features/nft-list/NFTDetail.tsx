@@ -1,15 +1,15 @@
-import { Pokemon } from "pokedex-promise-v2";
+import { NFT } from "pokedex-promise-v2";
 import React from "react";
 import { useParams } from "react-router-dom";
 import { Button, Icon, Segment, Statistic } from "semantic-ui-react";
 import { BuyForm } from "../buy/BuyForm";
-import { usePokemonQuery } from "./api-hooks";
-import { PokemonForTypeList } from "./PokemonForTypeList";
+import { useNFTQuery } from "./api-hooks";
+import { NFTForTypeList } from "./NFTForTypeList";
 
-export function PokemonDetail() {
+export function NFTDetail() {
   const params = useParams();
   const pokemonId = Number(params.pokemonId);
-  const pokemonQuery = usePokemonQuery(pokemonId);
+  const pokemonQuery = useNFTQuery(pokemonId);
 
   if (pokemonQuery.isLoading) {
     return <div>Loading...</div>;
@@ -97,8 +97,8 @@ export function PokemonDetail() {
           </Statistic.Group>
         </Segment>
         <Segment>
-          <h3>Pokemon with similar types</h3>
-          <PokemonForTypeList typeUrl={pokemon.types[0].type.url} />
+          <h3>NFT with similar types</h3>
+          <NFTForTypeList typeUrl={pokemon.types[0].type.url} />
         </Segment>
       </Segment.Group>
     </div>

@@ -10,12 +10,10 @@ import { Footer } from "@/components/Footer";
 import { NavBar } from "@/components/NavBar";
 
 import { BuyContextProvider } from "@/features/buy/context";
-import { PokemonList } from "@/features/nft-list/PokemonList";
-import { PokemonDetail } from "@/features/nft-list/PokemonDetail";
+import { NFTList } from "@/features/nft-list/NFTList";
+import { NFTDetail } from "@/features/nft-list/NFTDetail";
 import { Account } from "@/features/account/Account";
 import TopSellList from "./features/buy/TopSellList";
-
-// TODO(exo-context): 5. Ajouter le context Messages au composant App.
 
 const client = new QueryClient({});
 export default function App() {
@@ -27,8 +25,8 @@ export default function App() {
           <NavBar />
           <div className={styles.container}>
             <Routes>
-              <Route path="/" element={<PokemonList />} />
-              <Route path="/detail/:pokemonId" element={<PokemonDetail />} />
+              <Route path="/" element={<NFTList />} />
+              <Route path="/detail/:pokemonId" element={<NFTDetail />} />
               <Route path="/account" element={<Account />} />
               <Route path="/sell/top" element={<TopSellList />} />
             </Routes>

@@ -1,10 +1,10 @@
 import React from "react";
 import { Card } from "semantic-ui-react";
-import { usePokemonList } from "./api-hooks";
-import { PokemonCard } from "./PokemonCard";
+import { useNFTList } from "./api-hooks";
+import { NFTCard } from "./NFTCard";
 
-export function PokemonList() {
-  const pokemons = usePokemonList();
+export function NFTList() {
+  const pokemons = useNFTList();
   if (pokemons.isLoading) {
     return <div>Loading...</div>;
   }
@@ -14,10 +14,10 @@ export function PokemonList() {
 
   return (
     <div>
-      <h1>Pokemon List</h1>
+      <h1>NFT List</h1>
       <Card.Group itemsPerRow={4}>
         {pokemons.data.map(pokemon => (
-          <PokemonCard key={pokemon.id} pokemon={pokemon} />
+          <NFTCard key={pokemon.id} pokemon={pokemon} />
         ))}
       </Card.Group>
     </div>

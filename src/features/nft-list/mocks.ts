@@ -223,3 +223,20 @@ export const Guts = {
   ],
   weight: 69,
 };
+
+export const List = [
+  Guts,
+  Bulbasaur,
+  Guts,
+  Bulbasaur,
+  Guts,
+  Bulbasaur,
+  Guts,
+  Bulbasaur,
+  Guts,
+  Bulbasaur,
+  Guts,
+  Bulbasaur,
+  Guts,
+  Bulbasaur,
+];

@@ -3,12 +3,12 @@ import { useQuery } from "react-query";
 
 import { sleep, get } from "@/utils";
 
-export function useTopSellPokemonsQuery() {
+export function useTopSellNFTsQuery() {
   return useQuery(
-    "topSellPokemons",
+    "topSellNFTs",
     async () => {
       const response = await get<APIResourceList>(
-        "https://pokeapi.co/api/v2/pokemon?limit=30&offset=250"
+        "https://pokeapi.co/api/v2/pokemon?limit=90&offset=250"
       );
       await sleep();
       return response.results;

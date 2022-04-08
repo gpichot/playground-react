@@ -1,7 +1,7 @@
 import React from "react";
-import { usePokemonQuery } from "@/features/nft-list/api-hooks";
-import { PokemonCard } from "@/features/nft-list/PokemonCard";
-import { useTopSellPokemonsQuery } from "./api-hooks";
+import { useNFTQuery } from "@/features/nft-list/api-hooks";
+import { NFTCard } from "@/features/nft-list/NFTCard";
+import { useTopSellNFTsQuery } from "./api-hooks";
 import { Card } from "semantic-ui-react";
 import { withAdaptive } from "@/utils";
 
@@ -11,7 +11,22 @@ const computeAdaptiveProps = (width: number) =>
   } as Partial<React.ComponentProps<typeof Card.Group>>);
 
 export default function TopSellList() {
-  const topSellQuery = useTopSellPokemonsQuery();
+  const topSellQuery = useTopSellNFTsQuery();
+  const [selected, setSelected] = React.useState<{
+    url: string;
+    id: number;
+  } | null>(null);
+
+  const pokemons = (topSellQuery.data || []).map(pokemon => ({
+    url: pokemon.url,
+    id: Number(pokemon.url.split("/").slice(-2, -1)[0]),
+  }));
+
+  const AdaptiveCardGroup = withAdaptive(Card.Group, computeAdaptiveProps);
+
+  // React.useEffect(() => {
+  //   setSelected(pokemons?.length ? pokemons[0] : null);
+  // }, [pokemons]);
 
   if (topSellQuery.isLoading) {
     return <div>Loading...</div>;
@@ -20,26 +35,30 @@ export default function TopSellList() {
     return <div>Error!</div>;
   }
 
-  const pokemons = topSellQuery.data.map(pokemon => ({
-    url: pokemon.url,
-    id: Number(pokemon.url.split("/").slice(-2, -1)[0]),
-  }));
-
-  const AdaptiveCardGroup = withAdaptive(Card.Group, computeAdaptiveProps);
   return (
     <div>
       <h1>Top Sell</h1>
       <AdaptiveCardGroup>
         {pokemons.map(pokemon => (
-          <LoadPokemonCard key={pokemon.id} pokemon={pokemon} />
+          <LoadNFTCard
+            key={pokemon.id}
+            pokemon={pokemon}
+            selected={selected}
+          />
         ))}
       </AdaptiveCardGroup>
     </div>
   );
 }
 
-function LoadPokemonCard({ pokemon }: { pokemon: { id: number } }) {
-  const pokemonQuery = usePokemonQuery(pokemon.id);
+function LoadNFTCard({
+  pokemon,
+  selected,
+}: {
+  pokemon: { id: number };
+  selected: { id: number; url: string } | null;
+}) {
+  const pokemonQuery = useNFTQuery(pokemon.id);
 
   if (pokemonQuery.isLoading) {
     return <div>Loading...</div>;
@@ -48,9 +67,5 @@ function LoadPokemonCard({ pokemon }: { pokemon: { id: number } }) {
     return <div>Error!</div>;
   }
 
-  if (pokemonQuery.data.id === 252) {
-    console.log("hello");
-  }
-
-  return <PokemonCard pokemon={pokemonQuery.data} />;
+  return <NFTCard pokemon={pokemonQuery.data} />;
 }

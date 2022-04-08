@@ -1,7 +1,7 @@
 /**
  * TODO-EXO(exo-cypress)
  *
- * Dans cet exercice vous allez tester que l'on peut bien acheter un Pokemon
+ * Dans cet exercice vous allez tester que l'on peut bien acheter un NFT
  * via l'interface de l'application.
  *
  * 1. Ouvrez cypress en lançant `yarn run cypress open`
@@ -13,7 +13,7 @@
  * Bonus:
  * 1. Vérifiez que la balance est bien mise à jour.
  */
-describe("Page Pokemon Detail", () => {
+describe("Page NFT Detail", () => {
   beforeEach(() => {
     cy.clearLocalStorage();
   });
