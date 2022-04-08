@@ -1,0 +1,30 @@
+.control {
+  display: flex;
+  flex-flow: column;
+  align-items: stretch;
+  padding-bottom: 1rem;
+}
+
+.label {
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.input {
+  border-radius: 0;
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  color: #333;
+}
+
+.error {
+  color: darkred;
+}
+.errored {
+  .input {
+    border-color: darkred;
+  }
+  .label {
+    color: darkred;
+  }
+}
