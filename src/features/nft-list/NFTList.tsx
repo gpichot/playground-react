@@ -3,25 +3,19 @@ import { Card } from "semantic-ui-react";
 
 import { NFTCard } from "@pokenft/common";
 
-import { useNFTList } from "./api-hooks";
+import { nftsListMock } from "@/features/nft-list/mocks";
 
 export function NFTList() {
-  const pokemons = useNFTList();
-  if (pokemons.isLoading) {
-    return <div>Loading...</div>;
-  }
-  if (pokemons.isError || !pokemons.data) {
-    return <div>Error!</div>;
-  }
-
   return (
     <div>
       <h1>NFT List</h1>
       <Card.Group itemsPerRow={4}>
-        {pokemons.data.map(pokemon => (
-          <NFTCard key={pokemon.id} pokemon={pokemon} />
+        {nftsListMock.map(nft => (
+          <NFTCard key={nft.id} pokemon={nft} />
         ))}
       </Card.Group>
     </div>
   );
 }
+
+export default NFTList;

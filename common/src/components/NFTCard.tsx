@@ -1,6 +1,7 @@
-import { Pokemon } from "pokedex-promise-v2";
 import React from "react";
-import { Card, Icon, Image, Label, Button } from "semantic-ui-react";
+import { Pokemon } from "pokedex-promise-v2";
+import { Button, Card, Icon, Image, Label } from "semantic-ui-react";
+
 import { useImpressionReporter } from "@/features/advertisements";
 import { useBuyContext } from "@/features/buy/context";
 

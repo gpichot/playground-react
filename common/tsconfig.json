@@ -1,4 +1,5 @@
 {
+  "composite": true,
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
@@ -8,9 +9,9 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
-    "jsx": "react",
+    "jsx": "react-jsx",
     "moduleResolution": "Node",
-    "noEmit": true,
+    "noEmit": false,
     "noFallthroughCasesInSwitch": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
@@ -19,9 +20,8 @@
     "types": ["vite/client", "node", "jest", "@testing-library/jest-dom"],
     "baseUrl": ".",
     "paths": {
-      "@pokenft/common": ["./common/src"],
       "@/*": ["src/*"]
     }
   },
-  "include": ["vite.config.*", "jest.setup.ts", "src/**/*", "src/**/*.tsx"]
+  "include": ["jest.setup.ts", "src/**/*", "src/**/*.tsx"]
 }
