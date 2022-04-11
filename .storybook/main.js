@@ -14,7 +14,12 @@ module.exports = {
     builder: "webpack5",
   },
   stories: async list => [...list, ...getStories()],
-  addons: ["@storybook/addon-links", "@storybook/addon-essentials"],
+  addons: [
+    "@storybook/addon-links",
+    "@storybook/addon-essentials",
+    "@storybook/addon-a11y",
+    "@storybook/addon-interactions",
+  ],
   framework: "@storybook/react",
   typescript: {
     check: false,

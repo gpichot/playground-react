@@ -23,7 +23,7 @@ function NavBar() {
           {/*
           <Menu.Item position="right">
             <Button inverted onClick={() => setSignInModalOpen(true)}>
-              Log in
+              Sign in
             </Button>
             <Button as="a" inverted style={{ marginLeft: "0.5em" }}>
               Sign Up
