@@ -1,4 +1,9 @@
 import React from "react";
+import { FormProvider, useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+
+import BasicInputControl from "./BasicInputControl";
 
 type SignInPayload = {
   email: string;
@@ -76,5 +81,51 @@ export default function UncontrolledSignInForm({
         Sign In
       </button>
     </form>
+  );
+}
+
+const SignInSchema = yup.object().shape({
+  email: yup.string().email().required(),
+  password: yup.string().required(),
+});
+
+function useSignInForm(initialValues?: Partial<SignInPayload>) {
+  return useForm<SignInPayload>({
+    defaultValues: {
+      email: initialValues?.email ?? "",
+      password: initialValues?.password ?? "",
+    },
+    resolver: yupResolver(SignInSchema),
+  });
+}
+
+export function SignInFormWithBasicInputControl({
+  onSubmit,
+  initialValues,
+  hideActions,
+  ...props
+}: React.ComponentProps<"form"> & {
+  onSubmit: (credentials: SignInPayload) => void;
+  initialValues?: Partial<SignInPayload>;
+  hideActions?: boolean;
+}) {
+  const form = useSignInForm(initialValues);
+  const { handleSubmit, register } = form;
+  const onSubmitHandler = (payload: SignInPayload) => {
+    console.log(payload);
+    onSubmit?.(payload);
+  };
+  return (
+    <FormProvider {...form}>
+      <form onSubmit={handleSubmit(onSubmitHandler)} {...props} noValidate>
+        <BasicInputControl label="Email" {...register("email")} type="email" />
+        <BasicInputControl
+          label="Password"
+          {...register("password")}
+          type="password"
+        />
+        {!hideActions && <button type="submit">Sign In</button>}
+      </form>
+    </FormProvider>
   );
 }

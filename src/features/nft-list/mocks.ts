@@ -1,4 +1,4 @@
-import { NFT } from "@pokenft/common";
+import { NFT } from "@/features/common/types";
 
 export const Bulbasaur: NFT = {
   abilities: [

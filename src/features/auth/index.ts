@@ -1,1 +1,1 @@
-export { signIn, User } from "./api";
+export { signInWithPassword, User } from "./api";

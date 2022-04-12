@@ -1,6 +1,6 @@
 import React from "react";
 
-import { signIn, User } from "@/features/auth";
+import { signInWithPassword, User } from "@/features/auth";
 
 export type AuthContextType = {
   user: User | null;
@@ -16,7 +16,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const context = {
     user,
     signIn: async (email: string, password: string) => {
-      const user = await signIn(email, password);
+      const user = await signInWithPassword(email, password);
       setUser(user);
       return user;
     },

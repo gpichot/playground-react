@@ -5,7 +5,10 @@ export type User = {
 function sleep(ms: number) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
-export async function signIn(email: string, password: string): Promise<User> {
+export async function signInWithPassword(
+  email: string,
+  password: string
+): Promise<User> {
   await sleep(500);
   if (email === "admin@test.com" && password === "admin") {
     return {
