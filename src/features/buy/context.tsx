@@ -106,7 +106,7 @@ export function BuyContextProvider({
   const owns = (property: string) => state.properties.includes(property);
   return (
     <BuyContext.Provider value={{ ...state, buy, owns }}>
-      j{children}
+      {children}
     </BuyContext.Provider>
   );
 }

@@ -1,17 +1,9 @@
 import { useQuery } from "react-query";
-import { NFT, NFTType, Type } from "pokedex-promise-v2";
+import { Pokemon, PokemonType, Type } from "pokedex-promise-v2";
 
 import { get, sleep } from "@/utils";
 
-function getNFTsList(): Promise<NFT[]> {
-  return Promise.all(
-    new Array(100)
-      .fill(0)
-      .map((_, index) =>
-        get<NFT>(`https://pokeapi.co/api/v2/pokemon/${index + 1}`)
-      )
-  );
-}
+import { getNFTsList } from "./api";
 
 const QueryKeys = {
   pokemonsList: () => "pokemonsList",

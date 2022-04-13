@@ -4,9 +4,11 @@ import { Button, Container, Menu } from "semantic-ui-react";
 
 import SignInModal from "@/features/auth/SignInModal";
 import { useBuyContext } from "@/features/buy/context";
+import CreateNFTModal from "@/features/nft-list/CreateNFTModal";
 
 function NavBar() {
   const [signInModalOpen, setSignInModalOpen] = React.useState(false);
+  const [createNFTModalOpen, setCreateNFTModalOpen] = React.useState(false);
   const { isLoaded, balance } = useBuyContext();
   return (
     <>
@@ -19,8 +21,11 @@ function NavBar() {
             {isLoaded && <span id="account-balance">({balance})</span>}
             </Item>*/}
           {/*
-              <Item href="/sell/top">Top Sell</Item>*/}
+          <Menu.Item onClick={() => setCreateNFTModalOpen(true)}>
+            Create NFT
+            </Menu.Item>*/}
           {/*
+              <Item href="/sell/top">Top Sell</Item>*/}
           <Menu.Item position="right">
             <Button inverted onClick={() => setSignInModalOpen(true)}>
               Sign in
@@ -29,12 +34,15 @@ function NavBar() {
               Sign Up
             </Button>
           </Menu.Item>
-          */}
         </Container>
       </Menu>
       <SignInModal
         open={signInModalOpen}
         onClose={() => setSignInModalOpen(false)}
+      />
+      <CreateNFTModal
+        open={createNFTModalOpen}
+        onClose={() => setCreateNFTModalOpen(false)}
       />
     </>
   );

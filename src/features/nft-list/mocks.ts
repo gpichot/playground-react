@@ -1,5 +1,7 @@
 import { NFT } from "@/features/common/types";
 
+import { getPokemonsFromItemStorage } from "./api";
+
 export const Bulbasaur: NFT = {
   abilities: [
     {
@@ -221,6 +223,7 @@ export const Ivysaur: NFT = {
 };
 
 export const nftsListMock = [
+  ...getPokemonsFromItemStorage(),
   Ivysaur,
   Bulbasaur,
   { ...Ivysaur, id: "ivysaur-2" },

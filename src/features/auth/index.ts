@@ -1,1 +1,2 @@
-export { signInWithPassword, User } from "./api";
+export type { User } from "./api";
+export { signInWithPassword } from "./api";

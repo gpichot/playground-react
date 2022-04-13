@@ -17,13 +17,7 @@ function SignInModal({ open, onClose }: SignInModalProps) {
         <SignInForm id="sign-in-modal" hideActions onSubmit={handleSignIn} />
       </Modal.Content>
       <Modal.Actions>
-        <Button
-          positive
-          icon="checkmark"
-          labelPosition="right"
-          content="Sign in"
-          form="sign-in-modal"
-        >
+        <Button positive labelPosition="right" form="sign-in-modal">
           Sign in
         </Button>
       </Modal.Actions>
