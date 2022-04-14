@@ -4,10 +4,12 @@ import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { createMemoryHistory } from "history";
 
-import { Bulbasaur } from "@/features/nft-list/mocks";
+import { Bulbasaur, Ivysaur } from "@/features/nft-list/mocks";
 import { render } from "@/test/utils";
 
 import NFTCard from "./NFTCard";
+
+jest.mock("../hooks/useNotifyImpression");
 
 describe("NFTCard", () => {
   it("displays NFT name", () => {
@@ -16,19 +18,19 @@ describe("NFTCard", () => {
     expect(screen.getByText("bulbasaur")).toBeVisible();
   });
 
-  it.todo("displays premium label");
+  it("displays premium label", () => {
+    render(<NFTCard pokemon={Ivysaur} />);
+
+    expect(screen.getByText("Premium")).toBeVisible();
+  });
 
   it("goes to nft details page when click on more", async () => {
     const user = userEvent.setup();
     const history = createMemoryHistory();
-    render(
-      <Router navigator={history} location={"/"}>
-        <NFTCard pokemon={Bulbasaur} />
-      </Router>
-    );
+    render(<NFTCard pokemon={Bulbasaur} />, { history });
 
     await user.click(screen.getByText("More"));
 
-    expect(history.location.pathname).toBe("/nft/1");
+    expect(history.location.pathname).toBe("/detail/1");
   });
 });

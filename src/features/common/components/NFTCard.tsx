@@ -1,11 +1,12 @@
 import React from "react";
-import { Button, Card, Icon, Image, Label, Ref } from "semantic-ui-react";
+import { Link } from "react-router-dom";
+import { Button, Card, Icon, Label, Ref } from "semantic-ui-react";
 
 import { useBuyContext } from "@/features/buy/context";
-import { useImpressionReporter } from "@/features/impressions";
 
 import { NFT } from "../types";
 import { isNFTPremium } from "../utils";
+import useNotifyImpression from "../hooks/useNotifyImpression";
 
 function getColor({
   isFocused,
@@ -30,23 +31,10 @@ function getColor({
 
 export default function NFTCard({ pokemon, ...otherProps }: { pokemon: NFT }) {
   const isPremium = isNFTPremium(pokemon);
-  const impressionReporter = useImpressionReporter();
   const buyContext = useBuyContext();
   const hp = pokemon.stats.find(stat => stat.stat.name === "hp");
-  const ref = React.useRef<HTMLElement | null>(null);
 
-  React.useEffect(() => {
-    if (!isPremium) return;
-    const observer = new IntersectionObserver(
-      () => {
-        impressionReporter.logImpression(String(pokemon.id));
-      },
-      {
-        threshold: 0.7,
-      }
-    );
-    observer.observe(ref.current as unknown as Element);
-  }, [isPremium, pokemon, impressionReporter]);
+  const ref = useNotifyImpression({ isPremium, nftID: String(pokemon.id) });
 
   const [isFocused, setIsFocused] = React.useState(false);
   const [isHovered, setIsHovered] = React.useState(false);
@@ -63,12 +51,18 @@ export default function NFTCard({ pokemon, ...otherProps }: { pokemon: NFT }) {
         style={{ outline: 0 }}
       >
         <Card.Content>
-          <Image floated="right" src={pokemon.sprites.front_default} />
+          {pokemon.sprites.front_default && (
+            <img
+              src={pokemon.sprites.front_default}
+              className="ui image floated right"
+              alt={pokemon.name}
+            />
+          )}
           <Card.Header>{pokemon.name}</Card.Header>
           <Card.Meta>
             {pokemon.types.map(type => type.type.name).join(", ")}
           </Card.Meta>
-          {isPremium && process.env.NODE_ENV === "development" && (
+          {isPremium && (
             <Label color="yellow" ribbon>
               Premium
             </Label>
@@ -95,9 +89,11 @@ export default function NFTCard({ pokemon, ...otherProps }: { pokemon: NFT }) {
                 </>
               )}
             </div>
-            <Button as="a" href={`/detail/${pokemon.id}`} size="mini" secondary>
-              More
-            </Button>
+            <Link to={`/detail/${pokemon.id}`}>
+              <Button size="mini" secondary>
+                More
+              </Button>
+            </Link>
           </div>
         </Card.Content>
       </Card>

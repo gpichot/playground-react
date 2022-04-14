@@ -28,7 +28,9 @@ function NFTList() {
       <Form.Input
         placeholder="Filter"
         value={searchQuery}
-        onChange={e => setSearchQuery(e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+          setSearchQuery(e.target.value)
+        }
       />
       {query.isFetching && "Fetching"}
       <button onClick={() => setPage(page => page - 1)} disabled={page === 1}>
