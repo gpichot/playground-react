@@ -1,7 +1,8 @@
 import React from "react";
-import { NFT } from "pokedex-promise-v2";
+import classnames from "classnames";
 import { Button, Form, Message } from "semantic-ui-react";
 
+import { NFT } from "@/features/common";
 import { useMessages } from "@/features/messages";
 
 import { useBuyContext } from "./context";
@@ -53,7 +54,10 @@ export function BuyForm({ pokemon }: { pokemon: NFT }) {
   }
   return (
     <div className="buy-form">
-      <Form loading={buying} onSubmit={buy}>
+      <form
+        className={classnames("ui form", { loading: buying })}
+        onSubmit={buy}
+      >
         <Form.Group>
           <Form.Field required>
             <input
@@ -69,7 +73,7 @@ export function BuyForm({ pokemon }: { pokemon: NFT }) {
           </Form.Field>
           <Button type="submit">Buy</Button>
         </Form.Group>
-      </Form>
+      </form>
     </div>
   );
 }

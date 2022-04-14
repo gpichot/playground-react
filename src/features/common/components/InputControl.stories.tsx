@@ -29,9 +29,9 @@ const Template: Story<
   return (
     <div style={{ maxWidth: 300 }}>
       <FormProvider {...form}>
-        <Form onSubmit={form.handleSubmit(onSubmit)}>
+        <form className="ui form" onSubmit={form.handleSubmit(onSubmit)}>
           <InputControl {...props} name="firstName" />
-        </Form>
+        </form>
       </FormProvider>
     </div>
   );

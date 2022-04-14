@@ -2,7 +2,8 @@ import React from "react";
 import { Card, Form } from "semantic-ui-react";
 
 import usePaginatedPokemons from "@/features/common/hooks/usePaginatedPokemons";
-import NFTCard from "@/features/nft-list/NFTCard";
+
+import NFTCard from "./NFTCard";
 
 function NFTList() {
   const [searchQuery, setSearchQuery] = React.useState("");

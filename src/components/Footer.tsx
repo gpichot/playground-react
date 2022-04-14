@@ -1,17 +1,14 @@
 import React from "react";
-import { Container, Grid, Header, List, Segment } from "semantic-ui-react";
+import { Container } from "semantic-ui-react";
 
 function Footer() {
   return (
-    <Segment inverted vertical style={{ padding: "5em 0em" }}>
-      <Container>
-        <Grid divided inverted stackable>
-          <Grid.Row>
-            <Grid.Column width={3}></Grid.Column>
-          </Grid.Row>
-        </Grid>
-      </Container>
-    </Segment>
+    <div
+      className="ui segment inverted vertical"
+      style={{ padding: "5em 0em" }}
+    >
+      <Container>PokeNFT Corp</Container>
+    </div>
   );
 }
 

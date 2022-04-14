@@ -1,9 +1,8 @@
 import React from "react";
 import { Card } from "semantic-ui-react";
 
-import { NFTCard } from "@pokenft/common";
-
 import { useBuyContext } from "@/features/buy/context";
+import { NFTCard } from "@/features/common";
 import { useNFTQuery } from "@/features/nft-list/api-hooks";
 
 export function Account() {
@@ -38,7 +37,7 @@ export function PropertyNFTCard({ id }: { id: number }) {
     return <div>Loading...</div>;
   }
   if (pokemonQuery.isError || !pokemonQuery.data) {
-    return <div>Error: {pokemonQuery.error}</div>;
+    return <div>Error</div>;
   }
   return <NFTCard pokemon={pokemonQuery.data} />;
 }

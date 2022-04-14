@@ -1,8 +1,7 @@
 import React from "react";
 import { Card } from "semantic-ui-react";
 
-import { NFTCard } from "@pokenft/common";
-
+import { NFTCard } from "@/features/common";
 import { useNFTQuery } from "@/features/nft-list/api-hooks";
 import { withAdaptive } from "@/utils";
 

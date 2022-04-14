@@ -1,6 +1,10 @@
 import React, { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { QueryClient, QueryClientProvider } from "react-query";
+import {
+  QueryClient,
+  QueryClientProvider as BaseQueryClientProvider,
+  QueryClientProviderProps,
+} from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { BrowserRouter } from "react-router-dom";
 
@@ -16,6 +20,11 @@ if (!element) {
 const root = createRoot(element);
 
 const client = new QueryClient({});
+
+// Temporary fix
+const QueryClientProvider = BaseQueryClientProvider as React.FC<
+  QueryClientProviderProps & { children: React.ReactNode }
+>;
 
 root.render(
   <StrictMode>
