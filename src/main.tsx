@@ -9,7 +9,11 @@ import "./main.css";
 
 import App from "./App";
 
-const root = createRoot(document.getElementById("root"));
+const element = document.getElementById("root");
+if (!element) {
+  throw new Error("No root element found");
+}
+const root = createRoot(element);
 
 const client = new QueryClient({});
 

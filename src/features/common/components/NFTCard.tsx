@@ -4,9 +4,9 @@ import { Button, Card, Icon, Label, Ref } from "semantic-ui-react";
 
 import { useBuyContext } from "@/features/buy/context";
 
+import useNotifyImpression from "../hooks/useNotifyImpression";
 import { NFT } from "../types";
 import { isNFTPremium } from "../utils";
-import useNotifyImpression from "../hooks/useNotifyImpression";
 
 function getColor({
   isFocused,

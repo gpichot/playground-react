@@ -1,0 +1,22 @@
+.statBlock {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 0.8rem;
+}
+.statBlockGroup {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.statValue {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.statName {
+  font-size: 1.2rem;
+  font-weight: 400;
+}
