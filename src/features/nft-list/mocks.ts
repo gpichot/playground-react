@@ -123,6 +123,7 @@ export const Ivysaur: NFT = {
     },
   ],
   base_experience: 142,
+  game_indices: [],
   forms: [
     { name: "ivysaur", url: "https://pokeapi.co/api/v2/pokemon-form/2/" },
   ],
@@ -151,25 +152,6 @@ export const Ivysaur: NFT = {
     front_shiny:
       "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/2.png",
     front_shiny_female: null,
-    other: {
-      dream_world: {
-        front_default:
-          "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/2.svg",
-        front_female: null,
-      },
-      home: {
-        front_default:
-          "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/2.png",
-        front_female: null,
-        front_shiny:
-          "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/shiny/2.png",
-        front_shiny_female: null,
-      },
-      "official-artwork": {
-        front_default:
-          "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/2.png",
-      },
-    },
   },
   stats: [
     {
