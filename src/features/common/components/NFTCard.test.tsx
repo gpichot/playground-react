@@ -22,7 +22,7 @@ describe("NFTCard", () => {
     const user = userEvent.setup();
     const history = createMemoryHistory();
     render(
-      <Router history={history}>
+      <Router navigator={history} location={"/"}>
         <NFTCard pokemon={Bulbasaur} />
       </Router>
     );
