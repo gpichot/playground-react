@@ -67,7 +67,6 @@ export default function SignUpForm({
   } = useSignUpForm(initialValues);
 
   const onSubmitHandler = (payload: SignUpFormData) => {
-    console.log(payload);
     onSubmit?.({
       firstName: payload.firstName,
       lastName: payload.lastName,
@@ -136,7 +135,6 @@ export function SignUpFormWithBasicInputControl({
   const { handleSubmit, control, register } = form;
 
   const onSubmitHandler = (payload: SignUpFormData) => {
-    console.log(payload);
     onSubmit?.({
       firstName: payload.firstName,
       lastName: payload.lastName,

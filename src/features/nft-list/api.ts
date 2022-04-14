@@ -45,7 +45,6 @@ export async function getNFTsList(page = 0, limit = 4): Promise<NFT[]> {
       )
   );
 
-  const saved = page === 1 ? getPokemonsFromItemStorage() : [];
-  console.log("test", getPokemonsFromItemStorage());
+  const saved = page === 0 ? getPokemonsFromItemStorage() : [];
   return [...saved, ...pokemons];
 }

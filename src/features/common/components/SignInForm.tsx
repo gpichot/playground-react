@@ -21,7 +21,6 @@ export function SignInForm({
 
   const handleSubmit = (event: React.FormEvent<HTMLElement>) => {
     event.preventDefault();
-    console.log(`email: ${email} password: ${password}`);
     onSubmit?.({ email, password });
   };
   return (
@@ -64,7 +63,6 @@ export default function UncontrolledSignInForm({
     event.preventDefault();
     const email = emailRef.current?.value ?? "";
     const password = passwordRef.current?.value ?? "";
-    console.log(`email: ${email} password: ${password}`);
     onSubmit?.({ email, password });
   };
   return (
@@ -112,7 +110,6 @@ export function SignInFormWithBasicInputControl({
   const form = useSignInForm(initialValues);
   const { handleSubmit, register } = form;
   const onSubmitHandler = (payload: SignInPayload) => {
-    console.log(payload);
     onSubmit?.(payload);
   };
   return (
