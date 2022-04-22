@@ -1,6 +1,7 @@
 import React from "react";
+import { expect } from "@storybook/jest";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import { screen, userEvent } from "@storybook/testing-library";
+import { screen, userEvent, waitFor } from "@storybook/testing-library";
 
 import SignInForm from "./SignInForm";
 
@@ -18,7 +19,7 @@ const Template: ComponentStory<typeof SignInForm> = (
 
 export const Default = Template.bind({});
 Default.args = {};
-Default.play = async () => {
+Default.play = async ({ args }) => {
   const emailInput = screen.getByLabelText("Email", {
     selector: "input",
   });
@@ -38,4 +39,8 @@ Default.play = async () => {
   const submitButton = screen.getByRole("button");
 
   await userEvent.click(submitButton);
+
+  await waitFor(async () => {
+    await expect(args.onSubmit).toHaveBeenCalledTimes(1);
+  });
 };
