@@ -1,0 +1,53 @@
+.boxUpdates {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+}
+
+.boxUpdate {
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  width: 2px;
+  background-color: red;
+  &.fetch {
+    background-color: rgba(224, 224, 224, 0.9);
+  }
+  &.success {
+    background-color: rgba(0, 255, 0, 0.9);
+  }
+}
+
+.timelineContainer {
+  position: relative;
+  padding: 0;
+  margin: 30px 0 0 0;
+  color: white;
+  border-radius: 5px;
+  text-align: center;
+  padding: 4px 2px;
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  }
+}
+.ticker {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+}
+.tickerLine,
+.tickerTitle {
+  transform: translateX(-50%);
+}
+.tickerLine {
+  width: 2px;
+  background-color: red;
+  height: 100%;
+}
+.tickerTitle {
+  color: black;
+  height: 20px;
+  margin-top: -20px;
+}
