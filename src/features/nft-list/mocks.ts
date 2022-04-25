@@ -204,7 +204,7 @@ export const Ivysaur: NFT = {
   weight: 130,
 };
 
-export const nftsListMock = [
+export const nftsListMock: NFT[] = [
   ...getPokemonsFromItemStorage(),
   Ivysaur,
   Bulbasaur,
