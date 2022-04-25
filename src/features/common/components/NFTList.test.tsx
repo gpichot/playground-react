@@ -8,6 +8,7 @@ import usePaginatedPokemons from "../hooks/usePaginatedPokemons";
 import NFTList from "./NFTList";
 
 jest.mock("../hooks/usePaginatedPokemons");
+jest.mock("../hooks/useNotifyImpression");
 
 // Required for TypeScript
 const mockUsePaginatedPokemons = usePaginatedPokemons as jest.Mock;
