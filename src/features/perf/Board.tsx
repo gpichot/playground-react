@@ -98,10 +98,8 @@ function CardColumn({ week, cards }: { week: number; cards: Card[] }) {
 }
 
 function useCostlyFunction() {
-  let i = 0;
-  while (i < 1000000) {
-    i++;
-  }
+  const wakeUpTime = new Date().getTime() + 5;
+  while (new Date().getTime() < wakeUpTime);
 }
 
 function CardBox({ card }: { card: Card }) {
