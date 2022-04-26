@@ -16,7 +16,7 @@ describe("NFTCard", () => {
     await Default.play({
       args: { onSubmit },
       canvasElement: container,
-    } as any);
+    });
 
     expect(onSubmit).toHaveBeenCalledWith({
       email: "admin@test.com",
