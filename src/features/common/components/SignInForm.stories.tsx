@@ -1,7 +1,7 @@
 import React from "react";
 import { expect } from "@storybook/jest";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import { screen, userEvent, waitFor } from "@storybook/testing-library";
+import { userEvent, waitFor, within } from "@storybook/testing-library";
 
 import SignInForm from "./SignInForm";
 
@@ -19,7 +19,8 @@ const Template: ComponentStory<typeof SignInForm> = (
 
 export const Default = Template.bind({});
 Default.args = {};
-Default.play = async ({ args }) => {
+Default.play = async ({ args, canvasElement }) => {
+  const screen = within(canvasElement);
   const emailInput = screen.getByLabelText("Email", {
     selector: "input",
   });
