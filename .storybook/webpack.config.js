@@ -1,19 +1,41 @@
 const path = require("path");
-module.exports = async ({ config, mode }) => {
+module.exports = async ({ config }) => {
   config.resolve.alias["@"] = path.resolve(__dirname, "../src/");
 
-  config.module.rules.push({
+  const { module = {} } = config;
+  const newConfig = {
+    ...config,
+    module: {
+      ...module,
+      rules: [...(module.rules || [])],
+    },
+  };
+
+  const cssLoaderRule = newConfig.module.rules.find(
+    rule => rule?.test?.toString() === "/\\.css$/"
+  );
+
+  newConfig.module.rules.push({
+    ...cssLoaderRule,
     test: /module\.scss$/,
     use: [
-      "style-loader",
-      {
-        loader: "css-loader",
-        options: { modules: true },
-      },
+      ...cssLoaderRule.use.map(item => {
+        if (!item?.loader?.match(/[\/\\]css-loader/g)) return item;
+
+        return {
+          ...item,
+          options: {
+            ...item.options,
+            modules: true,
+          },
+        };
+      }),
       "sass-loader",
     ],
     include: path.resolve(__dirname, "../"),
   });
 
-  return config;
+  cssLoaderRule.exclude = /\.module\.scss$/;
+
+  return newConfig;
 };

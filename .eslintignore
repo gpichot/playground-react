@@ -7,5 +7,4 @@ public/
 __mocks__/
 
 jest.config.js
-postcss.config.js
 *.d.ts
