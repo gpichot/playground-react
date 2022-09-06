@@ -5,7 +5,6 @@ import NavBar from "@/components/NavBar";
 import { BuyContextProvider } from "@/features/buy/context";
 import NFTList from "@/features/nft-list/NFTList";
 
-import "semantic-ui-css/semantic.min.css";
 
 import styles from "./App.module.css";
 
