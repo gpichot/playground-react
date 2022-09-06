@@ -13,6 +13,7 @@ export function NFTList() {
       TODO...
       </Grid>
         */}
+      <p>TODO</p>
     </div>
   );
 }

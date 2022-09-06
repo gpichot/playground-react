@@ -34,22 +34,29 @@ function NavBar() {
                 <nav style={{ flexGrow: 1 }}>
                   <Item href="/">Home</Item>
                   {/*
-          <Item href="/account">
-            Account&nbsp;{" "}
-            {isLoaded && <span id="account-balance">({balance})</span>}
-            </Item>*/}
+                  <Item href="/account">
+                    Account&nbsp;{" "}
+                    {isLoaded && <span id="account-balance">({balance})</span>}
+                  </Item>
+                  */}
+                  {/*
                   <Button onClick={() => setCreateNFTModalOpen(true)}>
                     Create NFT
                   </Button>
+                  */}
                   {/*
-              <Item href="/sell/top">Top Sell</Item>*/}
+                  <Item href="/sell/top">Top Sell</Item>
+                  */}
                 </nav>
               </Grid>
               <Grid item xs={12} sm={6}>
                 <nav style={{ display: "flex", justifyContent: "flex-end" }}>
+                  {/*
                   <Button onClick={() => setSignInModalOpen(true)}>
                     Sign in
                   </Button>
+                  */}
+                  {/*
                   <Button
                     component="a"
                     href="#"
@@ -57,6 +64,7 @@ function NavBar() {
                   >
                     Sign Up
                   </Button>
+                  */}
                 </nav>
               </Grid>
             </Grid>
