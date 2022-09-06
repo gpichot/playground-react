@@ -24,7 +24,7 @@ export const InputControl = React.forwardRef<HTMLInputElement, InputProps>(
 
     const { errors } = useFormState({ name });
     const inputId = idProp || `${id}-${name}`;
-    const error = errors[name];
+    const error = errors[name] as { message: string } | undefined;
     return (
       <div
         className={classnames(styles.control, {
@@ -43,7 +43,7 @@ export const InputControl = React.forwardRef<HTMLInputElement, InputProps>(
           className={classnames(className, styles.input)}
           {...rest}
         />
-        {error && <div className={styles.error}>{error?.message}</div>}
+        {error?.message && <div className={styles.error}>{error?.message}</div>}
       </div>
     );
   }
