@@ -26,7 +26,7 @@ Default.play = async ({ args, canvasElement }) => {
   });
 
   await userEvent.type(emailInput, "admin@test.com", {
-    delay: 10,
+    delay: 100,
   });
 
   const passwordInput = screen.getByLabelText("Password", {
@@ -34,7 +34,7 @@ Default.play = async ({ args, canvasElement }) => {
   });
 
   await userEvent.type(passwordInput, "admin", {
-    delay: 10,
+    delay: 100,
   });
 
   const submitButton = screen.getByRole("button");

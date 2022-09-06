@@ -1,5 +1,5 @@
 import React from "react";
-import { Card } from "semantic-ui-react";
+import { Grid } from "@mui/material";
 
 import { nftsListMock } from "@/features/nft-list/mocks";
 
@@ -9,9 +9,10 @@ export function NFTList() {
       <h1>NFT List</h1>
 
       {/* 
-          <Card.Group itemsPerRow={4}></Card.Group>
-      */}
-      <p>TODO</p>
+      <Grid container spacing={2} alignItems="stretch">
+      TODO...
+      </Grid>
+        */}
     </div>
   );
 }

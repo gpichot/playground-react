@@ -48,3 +48,10 @@ Default.args = {
   label: "Label",
   placeholder: "Placeholder",
 };
+
+export const FilledDefault = Template.bind({});
+FilledDefault.args = {
+  label: "Label",
+  placeholder: "Placeholder",
+  value: "test",
+};

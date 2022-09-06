@@ -11,9 +11,10 @@ export default function useNotifyImpression<Element extends HTMLElement>({
 }) {
   const impressionReporter = useImpressionReporter();
 
-  const ref = React.useRef<Element | null>(null);
+  const ref = React.useRef<Element>(null);
   React.useEffect(() => {
     if (!isPremium) return;
+    if (!ref.current) return;
     const observer = new IntersectionObserver(
       entries => {
         entries.forEach(entry => {
@@ -25,7 +26,7 @@ export default function useNotifyImpression<Element extends HTMLElement>({
         threshold: 0.7,
       }
     );
-    observer.observe(ref.current as unknown as Element);
+    observer.observe(ref.current);
     return () => observer.disconnect();
   }, [isPremium, nftID, impressionReporter]);
 

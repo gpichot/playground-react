@@ -1,6 +1,18 @@
 import React from "react";
-import { Link, useMatch, useResolvedPath } from "react-router-dom";
-import { Button, Container, Menu } from "semantic-ui-react";
+import {
+  Link as RouterLink,
+  useMatch,
+  useResolvedPath,
+} from "react-router-dom";
+import {
+  AppBar,
+  Button,
+  Container,
+  Grid,
+  Link,
+  MenuItem,
+  Toolbar,
+} from "@mui/material";
 
 import SignInModal from "@/features/auth/SignInModal";
 import { useBuyContext } from "@/features/buy/context";
@@ -10,37 +22,53 @@ function NavBar() {
   const [signInModalOpen, setSignInModalOpen] = React.useState(false);
   const [createNFTModalOpen, setCreateNFTModalOpen] = React.useState(false);
   const { isLoaded, balance } = useBuyContext();
+  const modalRef = React.useRef(null);
+  React.useEffect(() => console.log(modalRef.current), []);
   return (
     <>
-      <Menu fixed="top" inverted size="large">
-        <Container>
-          <Item href="/">Home</Item>
-          {/*
+      <AppBar position="static" color="default" elevation={0}>
+        <Toolbar variant="dense">
+          <Container maxWidth="lg">
+            <Grid container>
+              <Grid item xs={12} sm={6}>
+                <nav style={{ flexGrow: 1 }}>
+                  <Item href="/">Home</Item>
+                  {/*
           <Item href="/account">
             Account&nbsp;{" "}
             {isLoaded && <span id="account-balance">({balance})</span>}
             </Item>*/}
-          {/*
-          <Menu.Item onClick={() => setCreateNFTModalOpen(true)}>
-            Create NFT
-            </Menu.Item>*/}
-          {/*
+                  <Button onClick={() => setCreateNFTModalOpen(true)}>
+                    Create NFT
+                  </Button>
+                  {/*
               <Item href="/sell/top">Top Sell</Item>*/}
-          <Menu.Item position="right">
-            <Button inverted onClick={() => setSignInModalOpen(true)}>
-              Sign in
-            </Button>
-            <Button as="a" inverted style={{ marginLeft: "0.5em" }}>
-              Sign Up
-            </Button>
-          </Menu.Item>
-        </Container>
-      </Menu>
+                </nav>
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <nav style={{ display: "flex", justifyContent: "flex-end" }}>
+                  <Button onClick={() => setSignInModalOpen(true)}>
+                    Sign in
+                  </Button>
+                  <Button
+                    component="a"
+                    href="#"
+                    style={{ marginLeft: "0.5em" }}
+                  >
+                    Sign Up
+                  </Button>
+                </nav>
+              </Grid>
+            </Grid>
+          </Container>
+        </Toolbar>
+      </AppBar>
       <SignInModal
         open={signInModalOpen}
         onClose={() => setSignInModalOpen(false)}
       />
       <CreateNFTModal
+        ref={modalRef}
         open={createNFTModalOpen}
         onClose={() => setCreateNFTModalOpen(false)}
       />
@@ -52,9 +80,14 @@ function Item({ children, href }: { children: React.ReactNode; href: string }) {
   const resolved = useResolvedPath(href);
   const match = useMatch({ path: resolved.pathname, end: true });
   return (
-    <Menu.Item as={Link} to={href} active={Boolean(match)}>
+    <Link
+      href={href}
+      color={match ? "text.secondary" : "text.primary"}
+      variant="button"
+      sx={{ my: 1, mx: 1.5 }}
+    >
       {children}
-    </Menu.Item>
+    </Link>
   );
 }
 

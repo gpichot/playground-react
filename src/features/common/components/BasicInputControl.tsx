@@ -5,7 +5,15 @@ import classnames from "classnames";
 import styles from "./BasicInputControl.module.scss";
 
 export type InputProps = {
+  /**
+   * The label for the input.
+   *
+   * @default ''
+   */
   label: string;
+  /**
+   * The name of the input.
+   */
   name: string;
 } & React.ComponentPropsWithRef<"input">;
 

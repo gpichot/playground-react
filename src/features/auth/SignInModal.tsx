@@ -1,5 +1,11 @@
 import React from "react";
-import { Button, Modal } from "semantic-ui-react";
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+} from "@mui/material";
 
 import { SignInForm } from "@/features/common";
 
@@ -11,17 +17,15 @@ type SignInModalProps = {
 function SignInModal({ open, onClose }: SignInModalProps) {
   const handleSignIn = console.log;
   return (
-    <Modal open={open} onClose={onClose}>
-      <Modal.Header>Sign In</Modal.Header>
-      <Modal.Content>
+    <Dialog open={open} onClose={onClose}>
+      <DialogTitle>Sign In</DialogTitle>
+      <DialogContent>
         <SignInForm id="sign-in-modal" hideActions onSubmit={handleSignIn} />
-      </Modal.Content>
-      <Modal.Actions>
-        <Button positive form="sign-in-modal">
-          Sign in
-        </Button>
-      </Modal.Actions>
-    </Modal>
+      </DialogContent>
+      <DialogActions>
+        <Button form="sign-in-modal">Sign in</Button>
+      </DialogActions>
+    </Dialog>
   );
 }
 

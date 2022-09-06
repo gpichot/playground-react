@@ -1,6 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Button, Card, Icon, Label, Ref } from "semantic-ui-react";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import {
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  CardHeader,
+  CardMedia,
+  Chip,
+} from "@mui/material";
 
 import { useBuyContext } from "@/features/buy/context";
 
@@ -29,74 +38,70 @@ function getColor({
   return undefined;
 }
 
-export default function NFTCard({ pokemon, ...otherProps }: { pokemon: NFT }) {
-  const isPremium = isNFTPremium(pokemon);
-  const buyContext = useBuyContext();
-  const hp = pokemon.stats.find(stat => stat.stat.name === "hp");
-
-  const ref = useNotifyImpression({ isPremium, nftID: String(pokemon.id) });
-
-  const [isFocused, setIsFocused] = React.useState(false);
+function useIsHoveredValue() {
   const [isHovered, setIsHovered] = React.useState(false);
-  return (
-    <Ref innerRef={ref}>
+  const onLeave = () => setIsHovered(false);
+  const onEnter = () => setIsHovered(true);
+  React.useDebugValue({ isHovered });
+  return { isHovered, onLeave, onEnter };
+}
+
+export const NFTCard = React.memo(
+  ({ pokemon, ...otherProps }: { pokemon: NFT }) => {
+    const isPremium = isNFTPremium(pokemon);
+    const buyContext = useBuyContext();
+    const hp = pokemon.stats.find(stat => stat.stat.name === "hp");
+
+    const ref = useNotifyImpression<HTMLDivElement>({
+      isPremium,
+      nftID: String(pokemon.id),
+    });
+
+    const { isHovered, onLeave, onEnter } = useIsHoveredValue();
+    const [isFocused, setIsFocused] = React.useState(false);
+    return (
       <Card
         color={getColor({ isFocused, isHovered, isPremium })}
         {...otherProps}
+        ref={ref}
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
+        onMouseEnter={onEnter}
+        onMouseLeave={onLeave}
         raised={isFocused}
         style={{ outline: 0 }}
       >
-        <Card.Content>
+        <CardHeader title={pokemon.name} />
+        <CardContent>
           {pokemon.sprites.front_default && (
-            <img
+            <CardMedia
+              component="img"
               src={pokemon.sprites.front_default}
               className="ui image floated right"
               alt={pokemon.name}
             />
           )}
-          <Card.Header>{pokemon.name}</Card.Header>
-          <Card.Meta>
-            {pokemon.types.map(type => type.type.name).join(", ")}
-          </Card.Meta>
-          {isPremium && (
-            <Label color="yellow" ribbon>
-              Premium
-            </Label>
-          )}
+          {pokemon.types.map(type => type.type.name).join(", ")}
+          {isPremium && <Chip label="Premium" />}
           {buyContext.owns(`pokemon-${pokemon.id}`) && (
-            <Label color="green" ribbon="right" style={{ marginTop: 60 }}>
-              Owned
-            </Label>
+            <Chip style={{ marginTop: 60 }} label="Owned" />
           )}
-        </Card.Content>
-        <Card.Content extra>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-            }}
-          >
-            <div>
-              {hp && (
-                <>
-                  <Icon name="heart" />
-                  {hp.base_stat}
-                </>
-              )}
-            </div>
-            <Link to={`/detail/${pokemon.id}`}>
-              <Button size="mini" secondary>
-                More
-              </Button>
-            </Link>
-          </div>
-        </Card.Content>
+        </CardContent>
+        <CardActions>
+          {hp && (
+            <>
+              <FavoriteIcon />
+              {hp.base_stat}
+            </>
+          )}
+          <Link to={`/detail/${pokemon.id}`}>
+            <Button size="small">More</Button>
+          </Link>
+        </CardActions>
       </Card>
-    </Ref>
-  );
-}
+    );
+  }
+);
+NFTCard.displayName = "NFTCard";
+
+export default NFTCard;
