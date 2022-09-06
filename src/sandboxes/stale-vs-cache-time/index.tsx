@@ -18,6 +18,7 @@ const client = new QueryClient({
       staleTime: Options.staleTime,
       cacheTime: Options.cacheTime,
       refetchInterval: Options.refetchInterval,
+      refetchOnMount: Options.refetchOnMount,
     },
   },
 });

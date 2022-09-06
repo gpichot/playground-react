@@ -4,12 +4,13 @@ export const Options = {
     endAt: 2000,
   },
   compB: {
-    startAt: 3000,
+    startAt: 1000,
     endAt: 4000,
   },
   staleTime: 0,
-  cacheTime: 800,
-  refetchInterval: 800,
+  cacheTime: 4000,
+  refetchInterval: 10000,
+  refetchOnMount: true,
 };
 
 export const Limit = 6000;
