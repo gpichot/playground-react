@@ -1,5 +1,6 @@
 import React from "react";
-import { Button, Icon } from "semantic-ui-react";
+import GoogleIcon from "@mui/icons-material/Google";
+import { Button } from "@mui/material";
 
 /**
  * TODO-EXO(CSS Modules)
@@ -23,8 +24,8 @@ export type GoogleSignInButtonProps = {
 
 export function GoogleSignInButton(props: GoogleSignInButtonProps) {
   return (
-    <Button {...props} icon>
-      <Icon name="google" />
+    <Button {...props}>
+      <GoogleIcon />
       &nbsp; Sign in with Google
     </Button>
   );

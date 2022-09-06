@@ -1,6 +1,6 @@
 import React from "react";
-import { ComponentMeta, ComponentStory, Story } from "@storybook/react";
-import { Button } from "semantic-ui-react";
+import { Button } from "@mui/material";
+import { ComponentMeta, Story } from "@storybook/react";
 
 import { AuthProvider, useAuthContext } from "./context";
 

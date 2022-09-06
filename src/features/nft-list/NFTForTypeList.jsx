@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Card } from "semantic-ui-react";
+import { Button, Grid } from "@mui/material";
 
 import { NFTCard } from "@/features/common";
 
@@ -11,11 +11,13 @@ export function NFTForTypeList({ typeUrl }) {
   };
   return (
     <>
-      <Card.Group itemsPerRow={4}>
+      <Grid container spacing={2}>
         {result.items.map(pokemon => (
-          <NFTCard key={pokemon.id} pokemon={pokemon} />
+          <Grid item xs={12} sm={6} md={4} lg={3} key={pokemon.id}>
+            <NFTCard pokemon={pokemon} />
+          </Grid>
         ))}
-      </Card.Group>
+      </Grid>
       <Button>Load more</Button>
     </>
   );

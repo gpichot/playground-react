@@ -1,7 +1,6 @@
 import React from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { ComponentMeta, Story } from "@storybook/react";
-import { Form } from "semantic-ui-react";
 
 import InputControl from "./InputControl";
 

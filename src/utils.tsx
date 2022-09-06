@@ -20,7 +20,7 @@ export function withAdaptive<P>(
   Component: React.ComponentType<P>,
   computeProps: (width: number) => Partial<P>
 ) {
-  return (props: P) => {
+  const NewComponent = (props: P) => {
     const [computedProps, setComputedProps] = React.useState<Partial<P>>(
       computeProps(window.innerWidth)
     );
@@ -33,4 +33,10 @@ export function withAdaptive<P>(
     }, []);
     return <Component {...props} {...computedProps} />;
   };
+
+  NewComponent.displayName = `withAdaptive(${
+    Component.displayName || "Anonymous"
+  })`;
+
+  return NewComponent;
 }

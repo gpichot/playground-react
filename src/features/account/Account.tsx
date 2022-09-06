@@ -1,5 +1,5 @@
 import React from "react";
-import { Card } from "semantic-ui-react";
+import { Grid } from "@mui/material";
 
 import { useBuyContext } from "@/features/buy/context";
 import { NFTCard } from "@/features/common";
@@ -12,11 +12,13 @@ export function Account() {
       <h1>Account</h1>
       Balance: {balance}
       <h2>My pokemons</h2>
-      <Card.Group itemsPerRow={4}>
+      <Grid container spacing={2}>
         {properties.map(property => (
-          <PropertyCard property={property} key={property} />
+          <Grid item xs={12} sm={6} md={4} lg={3} key={property}>
+            <PropertyCard property={property} />
+          </Grid>
         ))}
-      </Card.Group>
+      </Grid>
     </div>
   );
 }

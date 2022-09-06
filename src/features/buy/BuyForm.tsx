@@ -1,6 +1,6 @@
 import React from "react";
+import { Alert, Button, Input } from "@mui/material";
 import classnames from "classnames";
-import { Button, Form, Message } from "semantic-ui-react";
 
 import { NFT } from "@/features/common";
 import { useMessages } from "@/features/messages";
@@ -48,7 +48,7 @@ export function BuyForm({ pokemon }: { pokemon: NFT }) {
   if (buyContext.owns(`pokemon-${pokemon.id}`)) {
     return (
       <div className="buy-form">
-        <Message>You have this pokemon!</Message>
+        <Alert>You have this pokemon!</Alert>
       </div>
     );
   }
@@ -58,21 +58,16 @@ export function BuyForm({ pokemon }: { pokemon: NFT }) {
         className={classnames("ui form", { loading: buying })}
         onSubmit={buy}
       >
-        <Form.Group>
-          <Form.Field required>
-            <input
-              name="amount"
-              type="number"
-              placeholder="1.23"
-              step="0.01"
-              required
-              value={amount}
-              onChange={e => setAmount(e.target.value)}
-              onBlur={e => setAmount(e.target.value)}
-            />
-          </Form.Field>
-          <Button type="submit">Buy</Button>
-        </Form.Group>
+        <Input
+          name="amount"
+          type="number"
+          placeholder="1.23"
+          required
+          value={amount}
+          onChange={e => setAmount(e.target.value)}
+          onBlur={e => setAmount(e.target.value)}
+        />
+        <Button type="submit">Buy</Button>
       </form>
     </div>
   );

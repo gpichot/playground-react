@@ -1,8 +1,10 @@
 import React from "react";
 import { Controller, useFormContext } from "react-hook-form";
-import { Form, Ref } from "semantic-ui-react";
+import { Input } from "@mui/material";
 
-export type InputControlProps = React.ComponentProps<typeof Form.Input>;
+export interface InputControlProps extends React.ComponentProps<typeof Input> {
+  name: string;
+}
 
 const InputControl = (props: InputControlProps) => {
   const { control } = useFormContext();
@@ -10,7 +12,7 @@ const InputControl = (props: InputControlProps) => {
     <Controller
       control={control}
       name={props.name}
-      render={({ field }) => <Form.Input fluid {...props} {...field} />}
+      render={({ field }) => <Input {...props} {...field} />}
     />
   );
 };
