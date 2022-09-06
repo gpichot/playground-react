@@ -10,8 +10,15 @@ import TimelineBox, { TimelineBoxGroup } from "./TimelineBox";
 
 import styles from "./ReactQueryTimeline.module.scss";
 
-type QueryCacheNotifyEvent = NonNullable<
-  Parameters<Parameters<QueryCache["subscribe"]>[0]>[0]
+type NotNull<T> = T extends undefined ? never : T;
+type CacheSubscribeParams = NotNull<Parameters<QueryCache["subscribe"]>[0]>;
+
+type QueryCacheNotifyEvent = NonNullable<Parameters<CacheSubscribeParams>[0]>;
+type QueryCacheNotifyObserverEvent = Extract<
+  QueryCacheNotifyEvent,
+  {
+    observer: unknown;
+  }
 >;
 
 function getQueryAction(event: QueryCacheNotifyEvent) {
@@ -45,7 +52,7 @@ function createQueryEvent(
 }
 
 function createObserverEvent(
-  event: QueryCacheNotifyEvent,
+  event: QueryCacheNotifyObserverEvent,
   tick: number
 ): ObserverEvent {
   const { query } = event;
@@ -61,16 +68,21 @@ function createObserverEvent(
   };
 }
 
+function isObserverEvent(
+  event: QueryCacheNotifyEvent
+): event is QueryCacheNotifyObserverEvent {
+  return event.type.startsWith("observer");
+}
+
 function createEvent(
   event: QueryCacheNotifyEvent,
   tick: number
 ): ReactQueryEvent | null {
   if (event.type === "observerResultsUpdated") return null;
-  const type = event.type.startsWith("query") ? "query" : "observer";
-  if (type === "query") {
-    return createQueryEvent(event, tick);
+  if (isObserverEvent(event)) {
+    return createObserverEvent(event, tick);
   }
-  return createObserverEvent(event, tick);
+  return createQueryEvent(event, tick);
 }
 
 function useTimeline({

@@ -8,6 +8,8 @@ import {
   DialogTitle,
 } from "@mui/material";
 
+import { NFT } from "@/features/common";
+
 import { postPokemon } from "./api";
 import PokemonForm from "./PokemonForm";
 
@@ -21,7 +23,7 @@ export const CreateNFTDialog = React.forwardRef<
   React.ElementRef<typeof Dialog>,
   CreateNFTDialogProps
 >(({ open, onClose, ...otherProps }, ref) => {
-  const handleSubmit = pokemon => {
+  const handleSubmit = (pokemon: NFT) => {
     console.log(pokemon);
   };
 

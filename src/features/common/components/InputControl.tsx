@@ -1,10 +1,11 @@
 import React from "react";
 import { Controller, useFormContext } from "react-hook-form";
-import { Input } from "@mui/material";
+import { TextField } from "@mui/material";
 
-export interface InputControlProps extends React.ComponentProps<typeof Input> {
+export type InputControlProps = React.ComponentProps<typeof TextField> & {
   name: string;
-}
+  label?: string;
+};
 
 const InputControl = (props: InputControlProps) => {
   const { control } = useFormContext();
@@ -12,7 +13,7 @@ const InputControl = (props: InputControlProps) => {
     <Controller
       control={control}
       name={props.name}
-      render={({ field }) => <Input {...props} {...field} />}
+      render={({ field }) => <TextField {...props} {...field} />}
     />
   );
 };

@@ -4,11 +4,10 @@ import {
   unstable_HistoryRouter as HistoryRouter,
 } from "react-router-dom";
 import { render as rtlRender } from "@testing-library/react";
+import type { History } from "history";
 
 import { BuyContextProvider } from "@/features/buy/context";
 import { MessagesProvider } from "@/features/messages";
-
-import type { History } from "history";
 
 export function render(
   ui: Parameters<typeof rtlRender>[0],

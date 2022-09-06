@@ -24,7 +24,7 @@ export default function PokemonForm({
   ...otherProps
 }: {
   onSubmit: (pokemon: NFT) => void;
-} & React.ComponentProps<"form">) {
+} & Omit<React.ComponentProps<"form">, "onSubmit">) {
   const form = useForm<NFTBasicData>({
     defaultValues: {
       name: "",

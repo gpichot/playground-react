@@ -8,9 +8,9 @@ export default {
   component: GoogleSignInButton,
 } as ComponentMeta<typeof GoogleSignInButton>;
 
-// const Template: ComponentStory<typeof GoogleSignInButton> = args => (
-//   <GoogleSignInButton {...args} />
-// );
-//
-// export const Default = Template.bind({});
-// Default.args = {};
+const Template: ComponentStory<typeof GoogleSignInButton> = args => (
+  <GoogleSignInButton {...args} />
+);
+
+export const Default = Template.bind({});
+Default.args = {};

@@ -15,6 +15,7 @@ const BuyContext = React.createContext<BuyContextType>({
   properties: [],
   isLoaded: false,
   owns: () => false,
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   buy: () => {},
 });
 

@@ -3,7 +3,7 @@ import { QueryKey, QueryObserver } from "react-query";
 import { ObserverEvent, QueryEvent } from "./useEvents";
 
 type QueryUpdate = {
-  type: Omit<QueryEvent["type"], "added" | "removed">;
+  type: Exclude<QueryEvent["action"], "added" | "removed">;
   time: number;
   tick: number;
 };
