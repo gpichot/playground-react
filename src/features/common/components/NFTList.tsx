@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Form } from "semantic-ui-react";
+import { Button, Grid, Input, Toolbar } from "@mui/material";
 
 import usePaginatedPokemons from "@/features/common/hooks/usePaginatedPokemons";
 
@@ -25,26 +25,30 @@ function NFTList() {
   return (
     <div>
       <h1>NFT List</h1>
-      <button onClick={() => query.refetch()}>refetch</button>
-      <Form.Input
-        placeholder="Filter"
-        value={searchQuery}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-          setSearchQuery(e.target.value)
-        }
-      />
-      {query.isFetching && "Fetching"}
-      <button onClick={() => setPage(page => page - 1)} disabled={page === 1}>
-        previous
-      </button>
-      {page}
-      <button onClick={() => setPage(page => page + 1)}>next</button>
+      <Toolbar>
+        <Button onClick={() => query.refetch()}>refetch</Button>
+        <Input
+          placeholder="Filter"
+          value={searchQuery}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setSearchQuery(e.target.value)
+          }
+        />
+        {query.isFetching && "Fetching"}
+        <Button onClick={() => setPage(page => page - 1)} disabled={page === 1}>
+          previous
+        </Button>
+        {page}
+        <Button onClick={() => setPage(page => page + 1)}>next</Button>
+      </Toolbar>
       <br />
-      <Card.Group itemsPerRow={2}>
+      <Grid container spacing={2} alignItems="stretch">
         {filteredNfts.map(nft => (
-          <NFTCard key={nft.id} pokemon={nft} />
+          <Grid item xs={12} sm={6} md={4} lg={3} key={nft.id}>
+            <NFTCard pokemon={nft} />
+          </Grid>
         ))}
-      </Card.Group>
+      </Grid>
     </div>
   );
 }
