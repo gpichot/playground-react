@@ -1,8 +1,11 @@
 import React from "react";
 import classnames from "classnames";
-import { uuid } from "uuidv4";
 
 import styles from "./Board.module.scss";
+
+function uuid() {
+  return Math.ceil(Math.random() * 1000 * 1000 * 1000 * 1000);
+}
 
 type Card = {
   id: string;
