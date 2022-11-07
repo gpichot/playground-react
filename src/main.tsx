@@ -10,7 +10,6 @@ import { BrowserRouter } from "react-router-dom";
 
 import "./main.css";
 
-import Board from "./features/perf/Board";
 import App from "./App";
 
 const element = document.getElementById("root");
@@ -31,7 +30,7 @@ root.render(
     <BrowserRouter>
       <QueryClientProvider client={client}>
         <ReactQueryDevtools initialIsOpen={false} />
-        <Board />
+        <App />
       </QueryClientProvider>
     </BrowserRouter>
   </StrictMode>
