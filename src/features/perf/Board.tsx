@@ -4,7 +4,7 @@ import classnames from "classnames";
 import styles from "./Board.module.scss";
 
 function uuid() {
-  return Math.ceil(Math.random() * 1000 * 1000 * 1000 * 1000);
+  return Math.ceil(Math.random() * 1000 * 1000 * 1000 * 1000).toString(10);
 }
 
 type Card = {
